@@ -30,14 +30,24 @@ def main():
     #initial communication#
 
     try:
-        client.connect();
+        client.connect();#intial ping of to the opcua server
+
         TagName1 = client.get_node('ns=3;s="storageTempratures"."Temperature1C"')
         TagName2 = client.get_node('#This is for an input similar above to access the info on the client side#')
-        print(var.get_data_value())
-        Value1 = float(TagName1.get_value())
-        Value2 = float(TagName2.get_value())
-        print("value 1 = " + str(Value1))
-        print("value 2 = " + str(Value2))
+
+        #is expandable to however many nodes
+        #we need to monitor using possibly a xml to json or values into a single json and sending it out in that fashion
+
+        #below is first method to get values to input into a json file for distribution
+
+        #print(var.get_data_value())
+        #Value1 = float(TagName1.get_value())
+        #Value2 = float(TagName2.get_value())
+        #print("value 1 = " + str(Value1))
+        #print("value 2 = " + str(Value2))
+
+        #second method is to test the fethc xml function to use the xml to dict library to convert to dict and then finally dict to json
+        
     finally:
         client.disconnect()
 
