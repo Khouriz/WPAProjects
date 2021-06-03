@@ -13,18 +13,22 @@
 
 #libraries needed(subject to change)
 import time
-import calendar
-import socket
+import xmltodict
 import json
 import sys
 from opcua import Client
 
 def main():
     #define variable#
+
     client = Client("opc.tcp://#insert ip address here#")#may have to be redundant with anaonymous authentification if it comes to it
+
     #####################
+
     print(client.application_uri)
+
     #initial communication#
+
     try:
         client.connect();
         TagName1 = client.get_node('ns=3;s="storageTempratures"."Temperature1C"')
@@ -36,6 +40,7 @@ def main():
         print("value 2 = " + str(Value2))
     finally:
         client.disconnect()
+
     #####################
     
     #initial comunication to json format#
